@@ -1,0 +1,28 @@
+name: Validate theme
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  css:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --ignore-scripts
+      - run: npm run lint
+      - name: Validate portable metadata and selectors
+        run: |
+          grep -Fq "@name Catthode" catthode.theme.css
+          grep -Fq "@version 0.1.0" catthode.theme.css
+          if grep -Eq '\.[A-Za-z0-9_-]+_[A-Za-z0-9_-]+__[A-Za-z0-9_-]+' catthode.theme.css; then
+            echo "Generated Discord class selector found"
+            exit 1
+          fi
+          test "$(grep -c -- '--background-primary:' catthode.theme.css)" -eq 1
