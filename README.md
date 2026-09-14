@@ -28,7 +28,7 @@ https://raw.githubusercontent.com/catthode/discord/main/catthode.theme.css
 
 ## Validation
 
-CI checks the metadata, rejects generated Discord class selectors, and lints the CSS. The repository preview is an app-free UI fixture; a disposable signed-in empty-profile check now covers the current visual-refresh surfaces. Server channels, messages, calls, and profile states still need a privacy-safe manual pass before any directory submission.
+CI checks the metadata, rejects generated Discord class selectors, and lints the CSS. The checked-in `preview/catthode-discord.png` is an anonymous Vesktop capture of the Friends/Add Friend surface, and a disposable signed-in empty-profile check covers the current visual-refresh surfaces. A read-only public-server preview pass also covered channels, welcome messages, profile popovers, and Voice & Video settings without joining the server or sending messages. Actual calls and any community-directory submission remain separate manual/optional steps.
 
 ## License
 
