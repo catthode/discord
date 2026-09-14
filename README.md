@@ -28,7 +28,7 @@ https://raw.githubusercontent.com/catthode/discord/main/catthode.theme.css
 
 ## Validation
 
-CI checks the metadata, rejects generated Discord class selectors, and lints the CSS. The repository preview is an app-free UI fixture; a real signed-in Discord client check remains on the project checklist before directory submissions.
+CI checks the metadata, rejects generated Discord class selectors, and lints the CSS. The repository preview is an app-free UI fixture; a disposable signed-in empty-profile check now covers the current visual-refresh surfaces. Server channels, messages, calls, and profile states still need a privacy-safe manual pass before any directory submission.
 
 ## License
 

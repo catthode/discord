@@ -2,99 +2,540 @@
  * @name Catthode
  * @author Catthode
  * @version 0.1.0
- * @description Warm OLED Discord theme with amber, clay, and pale blue accents.
- * @source https://github.com/catthode/discord
+ * @description Warm OLED Discord theme with wheat, tan, gold, amber, and clay accents.
  * @website https://cattho.de/
+ * @source https://github.com/catthode/discord
  */
 
-:root,
-.theme-dark,
-.theme-darker,
-.theme-midnight {
-  color-scheme: dark;
-  --catthode-bg: #000000;
-  --catthode-surface: #141414;
-  --catthode-selection: #2d2d2d;
-  --catthode-border: #636363;
-  --catthode-muted: #b3b3b3;
-  --catthode-disabled: #757575;
-  --catthode-fg: #ffffff;
-  --catthode-red: #ff6b6b;
-  --catthode-green: #b9d665;
-  --catthode-gold: #ffb86c;
-  --catthode-amber: #ff9e3b;
-  --catthode-clay: #f08d49;
-  --catthode-blue: #9cd9e6;
-  --catthode-magenta: #eba4be;
-  --catthode-cyan: #aee6d6;
-  --catthode-pale: #fae2c8;
+:root {
+	/* Surface */
+	--base: #000000;
+	--sidebar: #141414;
+	--selection: #2d2d2d;
+	--border: #636363;
 
-  --background-primary: var(--catthode-bg);
-  --background-secondary: var(--catthode-surface);
-  --background-secondary-alt: #0b0b0b;
-  --background-tertiary: #080808;
-  --background-accent: var(--catthode-selection);
-  --background-floating: var(--catthode-surface);
-  --background-nested-floating: var(--catthode-bg);
-  --background-modifier-hover: rgb(255 184 108 / 10%);
-  --background-modifier-active: rgb(255 184 108 / 16%);
-  --background-modifier-selected: var(--catthode-selection);
-  --background-modifier-accent: rgb(99 99 99 / 45%);
-  --background-message-hover: rgb(255 255 255 / 4%);
-  --background-mentioned: rgb(255 184 108 / 10%);
-  --background-mentioned-hover: rgb(255 184 108 / 15%);
-  --background-message-highlight: rgb(156 217 230 / 10%);
+	/* Phosphor */
+	--text: #ffffff;
+	--variable: #e8e8e8;
+	--comment: #b3b3b3;
+	--ignored: #757575;
 
-  --text-normal: var(--catthode-fg);
-  --text-muted: var(--catthode-muted);
-  --text-link: var(--catthode-blue);
-  --text-positive: var(--catthode-green);
-  --text-warning: var(--catthode-gold);
-  --text-danger: var(--catthode-red);
-  --header-primary: var(--catthode-fg);
-  --header-secondary: var(--catthode-muted);
-  --interactive-normal: var(--catthode-muted);
-  --interactive-hover: var(--catthode-pale);
-  --interactive-active: var(--catthode-fg);
-  --interactive-muted: var(--catthode-disabled);
+	/* Glow */
+	--wheat: #fae2c8;
+	--tan: #d9b98c;
+	--gold: #ffb86c;
+	--amber: #ff9e3b;
+	--clay: #f08d49;
 
-  --brand-500: var(--catthode-amber);
-  --brand-560: var(--catthode-clay);
-  --brand-600: #d67232;
-  --brand-experiment: var(--catthode-amber);
-  --brand-experiment-560: var(--catthode-clay);
-  --status-positive: var(--catthode-green);
-  --status-warning: var(--catthode-gold);
-  --status-danger: var(--catthode-red);
-  --status-speaking: var(--catthode-cyan);
-  --info-positive-background: rgb(185 214 101 / 12%);
-  --info-warning-background: rgb(255 184 108 / 12%);
-  --info-danger-background: rgb(255 107 107 / 12%);
-  --info-help-background: rgb(156 217 230 / 12%);
+	/* Accents */
+	--red: #ff6b6b;
+	--green: #b9d665;
+	--cyan: #aee6d6;
+	--blue: #9cd9e6;
+	--purple: #eba4be;
+}
 
-  --channel-text-area-placeholder: var(--catthode-disabled);
-  --channels-default: var(--catthode-muted);
-  --channel-icon: var(--catthode-muted);
-  --scrollbar-auto-thumb: var(--catthode-border);
-  --scrollbar-auto-track: var(--catthode-bg);
-  --scrollbar-thin-thumb: var(--catthode-border);
-  --scrollbar-thin-track: transparent;
-  --input-background: var(--catthode-surface);
-  --modal-background: var(--catthode-bg);
-  --modal-footer-background: var(--catthode-surface);
-  --profile-gradient-primary-color: var(--catthode-surface);
-  --profile-gradient-secondary-color: var(--catthode-bg);
+.theme-dark {
+    --activity-card-background: var(--sidebar);
+    --android-navigation-bar-background: var(--base);
+    --android-navigation-scrim-background: var(--base);
+    --android-ripple: rgb(255 255 255 / 7%);
+    --background-accent: var(--selection);
+    --background-floating: var(--sidebar);
+    --background-mentioned: rgb(255 158 59 / 10%); /* Amber tint */
+    --background-mentioned-hover: rgb(255 158 59 / 20%);
+    --background-message-automod: rgb(255 107 107 / 5%); /* Red tint */
+    --background-message-automod-hover: rgb(255 107 107 / 10%);
+    --background-message-highlight: rgb(255 158 59 / 8%); /* Amber tint */
+    --background-message-highlight-hover: rgb(255 158 59 / 6%);
+    --background-message-hover: rgb(45 45 45 / 40%); /* Selection tint */
+    --background-mobile-primary: var(--base);
+    --background-mobile-secondary: var(--sidebar);
+    --background-modifier-accent: var(--selection);
+    --background-modifier-accent-2: var(--selection);
+    --background-modifier-active: rgb(45 45 45 / 60%);
+    --background-modifier-hover: rgb(45 45 45 / 40%);
+    --background-modifier-selected: var(--selection);
+    --background-nested-floating: var(--sidebar);
+    --background-primary: var(--base);
+    --background-secondary: var(--sidebar);
+    --background-secondary-alt: var(--sidebar);
+    --background-tertiary: var(--base);
+    --bg-backdrop: rgb(0 0 0 / 70%);
+    --bg-base-primary: var(--base);
+    --bg-base-secondary: var(--sidebar);
+    --bg-base-tertiary: var(--base);
+    --bg-mod-faint: rgb(20 20 20 / 30%);
+    --bg-mod-strong: rgb(20 20 20 / 54%);
+    --bg-mod-subtle: rgb(20 20 20 / 48%);
+    --bg-surface-overlay: var(--sidebar);
+    --bg-surface-overlay-tmp: var(--sidebar);
+    --bg-surface-raised: var(--base);
+    --blur-fallback: var(--sidebar);
+    --blur-fallback-pressed: var(--selection);
+    --border-faint: rgb(255 255 255 / 3%);
+    --border-strong: rgb(255 255 255 / 16%);
+    --border-subtle: rgb(255 255 255 / 8%);
+    --bug-reporter-modal-submitting-background: rgb(20 20 20 / 60%);
+    --button-creator-revenue-background: var(--amber);
+    --button-danger-background: var(--red);
+    --button-danger-background-active: var(--red);
+    --button-danger-background-disabled: var(--ignored);
+    --button-danger-background-hover: var(--red);
+    --button-outline-brand-background: transparent;
+    --button-outline-brand-background-active: var(--amber);
+    --button-outline-brand-background-hover: var(--amber);
+    --button-outline-brand-border: var(--amber);
+    --button-outline-brand-border-active: var(--amber);
+    --button-outline-brand-border-hover: var(--amber);
+    --button-outline-brand-text: var(--text);
+    --button-outline-brand-text-active: var(--base);
+    --button-outline-brand-text-hover: var(--base);
+    --button-outline-danger-background: transparent;
+    --button-outline-danger-background-active: var(--red);
+    --button-outline-danger-background-hover: var(--red);
+    --button-outline-danger-border: var(--red);
+    --button-outline-danger-border-active: var(--red);
+    --button-outline-danger-border-hover: var(--red);
+    --button-outline-danger-text: var(--text);
+    --button-outline-danger-text-active: var(--base);
+    --button-outline-danger-text-hover: var(--base);
+    --button-outline-positive-background: transparent;
+    --button-outline-positive-background-active: var(--green);
+    --button-outline-positive-background-hover: var(--green);
+    --button-outline-positive-border: var(--green);
+    --button-outline-positive-border-active: var(--green);
+    --button-outline-positive-border-hover: var(--green);
+    --button-outline-positive-text: var(--text);
+    --button-outline-positive-text-active: var(--base);
+    --button-outline-positive-text-hover: var(--base);
+    --button-outline-primary-background: transparent;
+    --button-outline-primary-background-active: var(--selection);
+    --button-outline-primary-background-hover: var(--selection);
+    --button-outline-primary-border: var(--selection);
+    --button-outline-primary-border-active: var(--selection);
+    --button-outline-primary-border-hover: var(--selection);
+    --button-outline-primary-text: var(--text);
+    --button-outline-primary-text-active: var(--text);
+    --button-outline-primary-text-hover: var(--text);
+    --button-positive-background: var(--green);
+    --button-positive-background-active: var(--green);
+    --button-positive-background-disabled: var(--ignored);
+    --button-positive-background-hover: var(--green);
+    --button-secondary-background: var(--selection);
+    --button-secondary-background-active: var(--border);
+    --button-secondary-background-disabled: var(--sidebar);
+    --button-secondary-background-hover: var(--border);
+    --card-gradient-bg: rgb(0 0 0 / 70%);
+    --card-gradient-pressed-bg: rgb(0 0 0 / 50%);
+    --card-primary-bg: var(--sidebar);
+    --card-primary-pressed-bg: var(--selection);
+    --card-secondary-bg: var(--sidebar);
+    --card-secondary-pressed-bg: var(--selection);
+    --channel-icon: var(--comment);
+    --channel-text-area-placeholder: var(--ignored);
+    --channels-default: var(--comment);
+    --channeltextarea-background: var(--sidebar);
+    --chat-background: var(--base);
+    --chat-border: var(--border);
+    --chat-input-container-background: var(--base);
+    --control-brand-foreground: var(--amber);
+    --control-brand-foreground-new: var(--amber);
+    --creator-revenue-icon-gradient-end: var(--gold);
+    --creator-revenue-icon-gradient-start: var(--amber);
+    --creator-revenue-info-box-background: rgb(255 158 59 / 10%);
+    --creator-revenue-info-box-border: var(--amber);
+    --creator-revenue-locked-channel-icon: var(--amber);
+    --creator-revenue-progress-bar: var(--amber);
+    --deprecated-card-bg: rgb(20 20 20 / 60%);
+    --deprecated-card-editable-bg: rgb(20 20 20 / 30%);
+    --deprecated-quickswitcher-input-background: var(--sidebar);
+    --deprecated-quickswitcher-input-placeholder: rgb(255 255 255 / 30%);
+    --deprecated-store-bg: var(--base);
+    --deprecated-text-input-bg: var(--sidebar);
+    --deprecated-text-input-border: rgb(0 0 0 / 30%);
+    --deprecated-text-input-border-disabled: var(--sidebar);
+    --deprecated-text-input-border-hover: var(--selection);
+    --deprecated-text-input-prefix: var(--comment);
+    --display-banner-overflow-background: rgb(20 20 20 / 50%);
+    --divider-strong: rgb(255 255 255 / 16%);
+    --divider-subtle: rgb(255 255 255 / 8%);
+    --forum-post-extra-media-count-container-background: rgb(45 45 45 / 80%);
+    --forum-post-tag-background: rgb(45 45 45 / 90%);
+    --guild-notifications-bottom-sheet-pill-background: var(--sidebar);
+    --header-muted: var(--comment);
+    --header-primary: var(--text);
+    --header-secondary: var(--comment);
+    --home-background: var(--base);
+    --home-card-resting-border: transparent;
+    --icon-muted: var(--ignored);
+    --icon-primary: var(--text);
+    --icon-secondary: var(--comment);
+    --info-danger-background: rgb(255 107 107 / 10%);
+    --info-danger-foreground: var(--red);
+    --info-danger-text: var(--text);
+    --info-help-background: rgb(156 217 230 / 10%);
+    --info-help-foreground: var(--blue);
+    --info-help-text: var(--text);
+    --info-positive-background: rgb(185 214 101 / 10%);
+    --info-positive-foreground: var(--green);
+    --info-positive-text: var(--text);
+    --info-warning-background: rgb(255 158 59 / 10%);
+    --info-warning-foreground: var(--amber);
+    --info-warning-text: var(--text);
+    --input-background: var(--sidebar);
+    --input-placeholder-text: var(--ignored);
+    --input-pressed-background: var(--selection);
+    --interactive-active: var(--text);
+    --interactive-hover: var(--text);
+    --interactive-muted: var(--ignored);
+    --interactive-normal: var(--comment);
+    --legacy-android-blur-overlay-default: rgb(45 45 45 / 50%);
+    --legacy-android-blur-overlay-ultra-thin: rgb(0 0 0 / 2.5%);
+    --legacy-blur-fallback-default: rgb(45 45 45 / 97.5%);
+    --legacy-blur-fallback-ultra-thin: rgb(0 0 0 / 95%);
+    --live-stage-tile-border: rgb(20 20 20 / 60%);
+    --logo-primary: var(--amber);
+    --mention-background: rgb(255 158 59 / 30%);
+    --mention-foreground: var(--amber);
+    --modal-background: var(--sidebar);
+    --modal-footer-background: var(--base);
+    --profile-gradient-card-background: rgb(0 0 0 / 70%);
+    --profile-gradient-message-input-border: rgb(20 20 20 / 48%);
+    --profile-gradient-note-background: rgb(0 0 0 / 30%);
+    --profile-gradient-overlay: rgb(0 0 0 / 60%);
+    --profile-gradient-overlay-synced-with-user-theme: rgb(0 0 0 / 80%);
+    --profile-gradient-profile-body-background-hover: rgb(255 255 255 / 16%);
+    --profile-gradient-role-pill-background: rgb(45 45 45 / 50%);
+    --profile-gradient-role-pill-border: rgb(255 255 255 / 20%);
+    --profile-gradient-section-box: rgb(0 0 0 / 45%);
+    --redesign-activity-card-background: var(--sidebar);
+    --redesign-activity-card-background-pressed: var(--selection);
+    --redesign-activity-card-badge-icon: var(--comment);
+    --redesign-activity-card-border: rgb(255 255 255 / 2%);
+    --redesign-activity-card-overflow-background: var(--selection);
+    --redesign-button-danger-background: var(--red);
+    --redesign-button-danger-pressed-background: var(--red);
+    --redesign-button-danger-text: var(--text);
+    --redesign-button-overlay-alpha-background: rgb(0 0 0 / 54%);
+    --redesign-button-overlay-alpha-pressed-background: rgb(0 0 0 / 64%);
+    --redesign-button-overlay-alpha-text: var(--text);
+    --redesign-button-overlay-background: var(--text);
+    --redesign-button-overlay-pressed-background: var(--comment);
+    --redesign-button-overlay-text: var(--base);
+    --redesign-button-positive-background: var(--green);
+    --redesign-button-positive-pressed-background: var(--green);
+    --redesign-button-positive-text: var(--text);
+    --redesign-button-primary-alt-background: transparent;
+    --redesign-button-primary-alt-border: var(--amber);
+    --redesign-button-primary-alt-on-blurple-background: transparent;
+    --redesign-button-primary-alt-on-blurple-border: var(--text);
+    --redesign-button-primary-alt-on-blurple-pressed-background: var(--amber);
+    --redesign-button-primary-alt-on-blurple-pressed-border: var(--amber);
+    --redesign-button-primary-alt-on-blurple-text: var(--text);
+    --redesign-button-primary-alt-pressed-background: rgb(255 158 59 / 16%);
+    --redesign-button-primary-alt-pressed-border: rgb(255 158 59 / 50%);
+    --redesign-button-primary-alt-pressed-text: var(--amber);
+    --redesign-button-primary-alt-text: var(--amber);
+    --redesign-button-primary-background: var(--amber);
+    --redesign-button-primary-on-blurple-background: var(--text);
+    --redesign-button-primary-on-blurple-pressed-background: var(--comment);
+    --redesign-button-primary-on-blurple-pressed-text: var(--amber);
+    --redesign-button-primary-on-blurple-text: var(--amber);
+    --redesign-button-primary-pressed-background: var(--gold);
+    --redesign-button-primary-text: var(--text);
+    --redesign-button-secondary-alt-background: var(--selection);
+    --redesign-button-secondary-alt-pressed-background: var(--sidebar);
+    --redesign-button-secondary-alt-pressed-text: var(--text);
+    --redesign-button-secondary-alt-text: var(--comment);
+    --redesign-button-secondary-background: var(--selection);
+    --redesign-button-secondary-border: rgb(255 255 255 / 8%);
+    --redesign-button-secondary-pressed-background: var(--sidebar);
+    --redesign-button-secondary-pressed-border: transparent;
+    --redesign-button-secondary-text: var(--comment);
+    --redesign-chat-input-background: var(--sidebar);
+    --redesign-input-control-active-bg: var(--selection);
+    --redesign-input-control-selected: var(--amber);
+    --redesign-only-background-active: var(--selection);
+    --redesign-only-background-default: var(--base);
+    --redesign-only-background-overlay: var(--selection);
+    --redesign-only-background-raised: var(--sidebar);
+    --redesign-only-background-sunken: var(--base);
+    --scrollbar-auto-scrollbar-color-thumb: var(--selection);
+    --scrollbar-auto-scrollbar-color-track: transparent;
+    --scrollbar-auto-thumb: var(--selection);
+    --scrollbar-auto-track: transparent;
+    --scrollbar-thin-thumb: var(--selection);
+    --scrollbar-thin-track: transparent;
+    --spoiler-hidden-background: var(--selection);
+    --spoiler-revealed-background: var(--sidebar);
+    --status-danger: var(--red);
+    --status-danger-background: var(--red);
+    --status-danger-text: var(--text);
+    --status-dnd: var(--red);
+	--status-idle: var(--amber);
+	--status-offline: var(--ignored);
+	--status-positive-background: var(--green);
+	--status-positive-text: var(--text);
+	--status-warning: var(--amber);
+	--status-warning-background: var(--amber);
+	--status-warning-text: var(--base);
+	--text-danger: var(--red);
+	--text-low-contrast: var(--comment);
+    --text-message-preview-low-sat: var(--comment);
+    --text-muted: var(--comment);
+    --text-muted-on-default: var(--comment);
+    --text-normal: var(--text);
+    --text-positive: var(--green);
+    --text-primary: var(--text);
+    --text-secondary: var(--comment);
+    --text-warning: var(--amber);
+    --textbox-markdown-syntax: var(--comment);
+    --user-profile-header-overflow-background: rgb(20 20 20 / 50%);
+
+    /* Brand Overrides */
+    --brand-experiment: var(--amber);
+    --brand-experiment-hover: var(--gold);
+    --brand-experiment-active: var(--gold);
+	--brand-experiment-500: var(--amber);
+	--brand-experiment-560: var(--amber);
+	--brand-experiment-600: var(--amber);
+
+	/* Discord visual-refresh tokens (the names used by current clients). */
+
+	/* Warm depth keeps OLED black as the anchor without leaving every surface flat. */
+	--surface-low: #0d0a08;
+	--surface: #15100d;
+	--surface-raised: #1d1611;
+	--surface-high: #261c14;
+	--surface-highlight: #302319;
+
+	--app-frame-background: var(--base);
+	--app-frame-border: rgb(255 184 108 / 14%);
+	--background-base-lowest: var(--base);
+	--background-base-lower: var(--surface-low);
+	--background-base-low: var(--surface);
+	--background-base-primary: var(--surface);
+	--background-base-secondary: var(--sidebar);
+	--background-base-tertiary: var(--surface-low);
+	--background-surface-lowest: var(--base);
+	--background-surface-lower: var(--surface-low);
+	--background-surface-low: var(--surface);
+	--background-surface-high: var(--surface-raised);
+	--background-surface-higher: var(--surface-high);
+	--background-surface-highest: var(--surface-highlight);
+	--background-brand: var(--amber);
+	--background-mod-muted: rgb(255 184 108 / 6%);
+	--background-mod-normal: rgb(255 184 108 / 12%);
+	--background-mod-strong: rgb(255 184 108 / 20%);
+	--background-mod-subtle: rgb(255 184 108 / 10%);
+	--background-feedback-info: rgb(217 185 140 / 10%);
+	--background-feedback-positive: rgb(240 141 73 / 10%);
+	--background-feedback-warning: rgb(255 184 108 / 10%);
+	--background-code: rgb(255 158 59 / 8%);
+	--background-code-addition: rgb(240 141 73 / 12%);
+	--background-tile-gradient-pink-start: rgb(255 158 59 / 18%);
+	--background-tile-gradient-pink-end: rgb(240 141 73 / 18%);
+
+	/* Current surfaces used by the main app, cards, channels, and composer. */
+	--card-background-default: var(--surface-raised);
+	--card-border-default: rgb(255 184 108 / 14%);
+	--channel-background-default: var(--surface-low);
+	--chat-background-default: var(--surface);
+	--panel-bg: var(--sidebar);
+	--chat-text-muted: var(--comment);
+
+	/* Blurple is Discord's indirection layer for brand controls. */
+	--blurple-10: rgb(255 158 59 / 10%);
+	--blurple-20: rgb(255 158 59 / 20%);
+	--blurple-40: var(--amber);
+	--blurple-50: var(--amber);
+	--blurple-60: var(--gold);
+	--blurple-65: var(--clay);
+	--blurple-70: #8e4a26;
+	--brand-400: var(--gold);
+	--brand-430: var(--gold);
+	--brand-460: var(--amber);
+	--brand-500: var(--amber);
+	--brand-530: var(--amber);
+	--brand-560: var(--gold);
+	--brand-600: var(--clay);
+	--brand-630: #8e4a26;
+	--brand-660: #65361f;
+	--brand-700: #452617;
+	--brand-730: #321d13;
+	--brand-760: #26170f;
+	--brand-800: #1d110b;
+	--brand-830: #140c08;
+	--brand-860: #0e0805;
+	--brand-900: #080403;
+	--green-300: var(--tan);
+	--green-330: var(--gold);
+	--green-360: var(--clay);
+	--opacity-blurple-1-hsl: 31 100% 62%;
+	--opacity-blurple-4-hsl: 31 100% 62%;
+	--opacity-blurple-8-hsl: 31 100% 62%;
+	--opacity-blurple-12-hsl: 31 100% 62%;
+	--opacity-blurple-16-hsl: 31 100% 62%;
+	--opacity-blurple-20-hsl: 31 100% 62%;
+	--opacity-blurple-24-hsl: 31 100% 62%;
+	--opacity-blurple-32-hsl: 31 100% 62%;
+	--opacity-blurple-40-hsl: 31 100% 62%;
+	--opacity-blurple-48-hsl: 31 100% 62%;
+	--opacity-blurple-64-hsl: 31 100% 62%;
+	--opacity-blurple-80-hsl: 31 100% 62%;
+	--opacity-blurple-1: rgb(255 158 59 / 2%);
+	--opacity-blurple-4: rgb(255 158 59 / 4%);
+	--opacity-blurple-8: rgb(255 158 59 / 8%);
+	--opacity-blurple-12: rgb(255 158 59 / 12%);
+	--opacity-blurple-16: rgb(255 158 59 / 16%);
+	--opacity-blurple-20: rgb(255 158 59 / 20%);
+	--opacity-blurple-24: rgb(255 158 59 / 24%);
+	--opacity-blurple-32: rgb(255 158 59 / 32%);
+	--opacity-blurple-40: rgb(255 158 59 / 40%);
+	--opacity-blurple-48: rgb(255 158 59 / 48%);
+	--opacity-blurple-64: rgb(255 158 59 / 64%);
+	--opacity-blurple-80: rgb(255 158 59 / 80%);
+
+	/* Primary, secondary, and connected controls. */
+	--control-primary-background-default: var(--amber);
+	--control-primary-background-hover: var(--gold);
+	--control-primary-background-active: var(--clay);
+	--control-primary-text-default: var(--base);
+	--control-primary-text-hover: var(--base);
+	--control-primary-text-active: var(--base);
+	--control-primary-icon-default: var(--base);
+	--control-primary-icon-hover: var(--base);
+	--control-primary-icon-active: var(--base);
+	--control-primary-border-default: rgb(255 184 108 / 22%);
+	--control-primary-border-hover: rgb(255 226 200 / 34%);
+	--control-primary-border-active: rgb(255 226 200 / 42%);
+	--button-primary-background: var(--amber);
+	--button-primary-background-hover: var(--gold);
+	--button-primary-background-active: var(--clay);
+	--button-primary-text: var(--base);
+	--button-primary-text-hover: var(--base);
+	--button-primary-text-active: var(--base);
+	--control-secondary-background-default: var(--selection);
+	--control-secondary-background-hover: var(--surface-highlight);
+	--control-secondary-background-active: var(--surface-high);
+	--control-secondary-text-default: var(--variable);
+	--control-secondary-text-hover: var(--text);
+	--control-secondary-text-active: var(--text);
+	--control-secondary-icon-default: var(--comment);
+	--control-secondary-icon-hover: var(--text);
+	--control-secondary-icon-active: var(--text);
+	--control-secondary-border-default: rgb(255 184 108 / 12%);
+	--control-secondary-border-hover: rgb(255 184 108 / 22%);
+	--control-secondary-border-active: rgb(255 184 108 / 30%);
+	--control-connected-background-default: var(--clay);
+	--control-connected-background-hover: var(--gold);
+	--control-connected-background-active: var(--amber);
+	--control-connected-text-default: var(--base);
+	--control-connected-text-hover: var(--base);
+	--control-connected-text-active: var(--base);
+	--control-connected-icon-default: var(--base);
+	--control-connected-icon-hover: var(--base);
+	--control-connected-icon-active: var(--base);
+
+	/* Selected tabs, radios, checkboxes, switches, and reactions. */
+	--interactive-accent-background-active: var(--clay);
+	--interactive-accent-background-hover: rgb(255 158 59 / 24%);
+	--interactive-accent-background-selected: rgb(255 158 59 / 24%);
+	--interactive-background-default: rgb(255 184 108 / 8%);
+	--interactive-background-hover: rgb(255 184 108 / 14%);
+	--interactive-background-active: rgb(255 184 108 / 20%);
+	--interactive-background-selected: rgb(255 158 59 / 22%);
+	--interactive-text-default: var(--comment);
+	--interactive-text-hover: var(--text);
+	--interactive-text-active: var(--text);
+	--interactive-icon-default: var(--comment);
+	--interactive-icon-hover: var(--text);
+	--interactive-icon-active: var(--text);
+	--radio-background-selected-default: var(--amber);
+	--radio-background-selected-hover: var(--gold);
+	--radio-background-active: var(--clay);
+	--radio-foreground-active: var(--amber);
+	--switch-background-selected-default: var(--clay);
+	--switch-background-selected-hover: var(--gold);
+	--switch-background-active: var(--amber);
+	--switch-thumb-icon-active: var(--clay);
+	--checkbox-background-selected-default: var(--amber);
+	--checkbox-background-selected-hover: var(--gold);
+	--checkbox-background-active: var(--clay);
+	--togglebutton-background-selected: rgb(255 158 59 / 18%);
+	--togglebutton-background-selected-hover: rgb(255 184 108 / 24%);
+	--togglebutton-border-selected: var(--amber);
+	--reaction-background-reacted-default: rgb(255 158 59 / 24%);
+	--reaction-background-reacted-hover: rgb(255 184 108 / 30%);
+	--reaction-border-reacted-default: var(--amber);
+
+	/* Text, icons, links, and feedback stay within the warm palette. */
+	--text-default: var(--variable);
+	--text-strong: var(--text);
+	--text-subtle: var(--comment);
+	--text-link: var(--gold);
+	--text-link-low-saturation: var(--tan);
+	--text-brand: var(--amber);
+	--text-feedback-info: var(--tan);
+	--text-feedback-positive: var(--gold);
+	--text-feedback-warning: var(--gold);
+	--icon-default: var(--variable);
+	--icon-strong: var(--text);
+	--icon-subtle: var(--comment);
+	--icon-brand: var(--amber);
+	--icon-link: var(--gold);
+	--icon-feedback-info: var(--tan);
+	--icon-feedback-positive: var(--gold);
+	--icon-feedback-warning: var(--gold);
+	--border-focus: var(--gold);
+	--border-feedback-info: rgb(217 185 140 / 50%);
+	--border-feedback-positive: rgb(240 141 73 / 50%);
+	--border-feedback-warning: rgb(255 184 108 / 50%);
+	--input-border-active: var(--amber);
+	--input-placeholder-text-default: var(--ignored);
+	--input-text-default: var(--variable);
+	--input-icon-default: var(--comment);
+
+	/* Avoid reintroducing Discord blue/green in status and connected affordances. */
+	--status-online: var(--gold);
+	--status-positive: var(--gold);
+	--status-speaking: var(--gold);
+	--text-status-online: var(--gold);
+	--text-voice-connected: var(--gold);
+	--text-voice-speaking: var(--gold);
+	--icon-status-online: var(--gold);
+	--icon-voice-connected: var(--gold);
+	--icon-voice-speaking: var(--gold);
+	--slider-track-background: var(--selection);
+	--badge-background-brand: var(--amber);
+	--badge-text-brand: var(--base);
+	--notice-background-info: rgb(217 185 140 / 14%);
+	--notice-text-info: var(--tan);
+	--notice-background-positive: rgb(240 141 73 / 14%);
+	--notice-text-positive: var(--gold);
+	--notice-background-warning: rgb(255 184 108 / 14%);
+	--notice-text-warning: var(--gold);
+}
+
+/* A few current Quest surfaces ship a decorative glow as a literal color. */
+.theme-dark [class*="glow_"] {
+	background-image: radial-gradient(rgb(255 184 108 / 38%) 0, rgb(255 184 108 / 0%) 60%);
+}
+
+.theme-dark [class*="withGradient_"]::after {
+	background-image: linear-gradient(90deg, rgb(240 141 73 / 72%), rgb(255 158 59 / 72%));
 }
 
 ::selection {
-  color: var(--catthode-fg);
+  color: var(--text);
   background: rgb(240 141 73 / 55%);
 }
 
 a:not([class]) {
-  color: var(--catthode-blue);
+  color: var(--blue);
 }
 
 :focus-visible {
-  outline-color: var(--catthode-gold) !important;
+  outline-color: var(--gold) !important;
 }
