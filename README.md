@@ -4,7 +4,7 @@
 
 A warm, true-black Discord theme for Vencord and BetterDiscord. It maps Discord's public design tokens instead of generated class names, keeping the port compact and less brittle.
 
-![Catthode Discord preview](preview/catthode-discord.svg)
+![Catthode Discord preview](preview/catthode-discord.png)
 
 ## Install
 
