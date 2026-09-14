@@ -21,9 +21,13 @@ jobs:
       - name: Validate portable metadata and selectors
         run: |
           grep -Fq "@name Catthode" catthode.theme.css
-          grep -Fq "@version 0.1.0" catthode.theme.css
+          grep -Fq "@version 0.2.0" catthode.theme.css
           if grep -Eq '\.[A-Za-z0-9_-]+_[A-Za-z0-9_-]+__[A-Za-z0-9_-]+' catthode.theme.css; then
             echo "Generated Discord class selector found"
+            exit 1
+          fi
+          if grep -Eq 'url\(' catthode.theme.css; then
+            echo "Remote or bitmap asset reference found"
             exit 1
           fi
           test "$(grep -c -- '--background-primary:' catthode.theme.css)" -eq 1

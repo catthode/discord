@@ -1,7 +1,7 @@
 /**
  * @name Catthode
  * @author Catthode
- * @version 0.1.0
+ * @version 0.2.0
  * @description Warm OLED Discord theme with wheat, tan, gold, amber, and clay accents.
  * @website https://cattho.de/
  * @source https://github.com/catthode/discord
@@ -29,10 +29,23 @@
 
 	/* Accents */
 	--red: #ff6b6b;
-	--green: #b9d665;
-	--cyan: #aee6d6;
-	--blue: #9cd9e6;
-	--purple: #eba4be;
+
+	/* Semantic fallbacks stay inside the warm Catthode palette. */
+	--green: var(--gold);
+	--cyan: var(--tan);
+	--blue: var(--gold);
+	--purple: var(--clay);
+
+	/* Borders keep true black legible without adding a texture layer. */
+	--catthode-line: rgb(255 184 108 / 26%);
+	--catthode-line-soft: rgb(255 184 108 / 12%);
+	--catthode-line-strong: rgb(255 226 200 / 46%);
+	--catthode-fill-hover: rgb(255 184 108 / 7%);
+	--catthode-fill-selected: rgb(255 158 59 / 12%);
+	--catthode-fill-mentioned: rgb(240 141 73 / 14%);
+	--catthode-radius-sm: 6px;
+	--catthode-radius-md: 10px;
+	--catthode-radius-lg: 14px;
 }
 
 .theme-dark {
@@ -527,13 +540,221 @@
 	background-image: linear-gradient(90deg, rgb(240 141 73 / 72%), rgb(255 158 59 / 72%));
 }
 
+/* Structural treatment: warm borders make the OLED-black surfaces distinct. */
+.theme-dark #app-mount {
+	background: var(--base);
+	color: var(--text);
+}
+
+.theme-dark [class*="guilds_"] {
+	border-right: 1px solid var(--catthode-line);
+	background: var(--base);
+}
+
+.theme-dark [class*="sidebar_"] {
+	border-right: 1px solid var(--catthode-line);
+	background: var(--sidebar);
+}
+
+.theme-dark [class*="chat_"] {
+	background: var(--base);
+}
+
+.theme-dark [class*="chat_"] > [class*="header_"],
+.theme-dark [class*="headerBar_"] {
+	border-bottom: 1px solid var(--catthode-line);
+	box-shadow: inset 0 -1px 0 var(--catthode-line-soft);
+}
+
+.theme-dark [class*="membersWrap_"] {
+	border-left: 1px solid var(--catthode-line);
+	background: var(--sidebar);
+}
+
+.theme-dark [class*="panels_"] {
+	border-top: 1px solid var(--catthode-line);
+	background: var(--surface-low);
+}
+
+/* Server rail: a restrained outline gives the home/server controls a frame. */
+.theme-dark [class*="guilds_"] [class*="childWrapper_"],
+.theme-dark [class*="guilds_"] [class*="circleIconButton_"] {
+	border: 1px solid var(--catthode-line-soft);
+	background: var(--surface-low);
+}
+
+.theme-dark [class*="guilds_"] [class*="wrapper_"]:hover > [class*="childWrapper_"],
+.theme-dark [class*="guilds_"] [class*="wrapper_"][aria-selected="true"] > [class*="childWrapper_"] {
+	border-color: var(--gold);
+}
+
+/* Channel selection is an outlined state rather than a solid blue pill. */
+.theme-dark [class*="modeSelected_"] > [class*="link_"] {
+	border: 1px solid var(--catthode-line);
+	border-left: 3px solid var(--amber);
+	border-radius: var(--catthode-radius-sm);
+	background: var(--catthode-fill-selected);
+	color: var(--text);
+}
+
+.theme-dark [class*="modeSelectable_"] > [class*="link_"]:hover {
+	border: 1px solid var(--catthode-line-soft);
+	border-left: 3px solid var(--clay);
+	border-radius: var(--catthode-radius-sm);
+	background: var(--catthode-fill-hover);
+	color: var(--text);
+}
+
+.theme-dark [class*="unreadPill_"] {
+	border: 1px solid var(--catthode-line-strong);
+	background: var(--amber);
+	color: var(--base);
+}
+
+.theme-dark [class*="unread_"] {
+	background: var(--amber);
+}
+
+/* Message rows get a quiet card edge on hover and a clear mention rail. */
+.theme-dark [class*="message_"][class*="cozy_"] {
+	border: 1px solid transparent;
+	border-radius: var(--catthode-radius-sm);
+}
+
+.theme-dark [class*="message_"][class*="cozy_"]:hover {
+	border-color: var(--catthode-line-soft);
+	background: var(--catthode-fill-hover);
+}
+
+.theme-dark [class*="mentioned_"] {
+	border-left: 3px solid var(--amber);
+	border-radius: 0 var(--catthode-radius-sm) var(--catthode-radius-sm) 0;
+	background: var(--catthode-fill-mentioned) !important;
+}
+
+.theme-dark [class*="reaction_"] {
+	border: 1px solid var(--catthode-line-soft);
+	border-radius: var(--catthode-radius-sm);
+	background: var(--surface-low);
+}
+
+.theme-dark [class*="reaction_"][class*="reactionMe_"] {
+	border-color: var(--amber);
+	background: var(--catthode-fill-selected);
+}
+
+/* Composer and attachments use the same outlined surface language. */
+.theme-dark [class*="channelTextArea_"] {
+	border: 1px solid var(--catthode-line);
+	border-radius: var(--catthode-radius-md);
+	background: var(--surface-low);
+}
+
+.theme-dark [class*="channelTextArea_"]:focus-within {
+	border-color: var(--gold);
+}
+
+.theme-dark [class*="scrollableContainer_"] {
+	background: transparent;
+}
+
+.theme-dark [class*="embedFull_"],
+.theme-dark [class*="attachment_"] {
+	border: 1px solid var(--catthode-line);
+	border-left: 3px solid var(--clay);
+	border-radius: var(--catthode-radius-md);
+	background: var(--surface-low);
+}
+
+/* Filled and outlined controls share warm focus, hover, and pressed states. */
+.theme-dark [class*="lookFilled_"][class*="colorBrand_"],
+.theme-dark [class*="buttonPrimary_"] {
+	border: 1px solid var(--catthode-line-strong);
+	border-radius: var(--catthode-radius-sm);
+	background: var(--amber);
+	color: var(--base);
+}
+
+.theme-dark [class*="lookFilled_"][class*="colorBrand_"]:hover,
+.theme-dark [class*="buttonPrimary_"]:hover {
+	border-color: var(--wheat);
+	background: var(--gold);
+	color: var(--base);
+}
+
+.theme-dark [class*="lookFilled_"][class*="colorBrand_"]:active,
+.theme-dark [class*="buttonPrimary_"]:active {
+	background: var(--clay);
+	color: var(--base);
+}
+
+.theme-dark [class*="lookOutlined_"][class*="colorBrand_"] {
+	border: 1px solid var(--amber);
+	border-radius: var(--catthode-radius-sm);
+	background: transparent;
+	color: var(--gold);
+}
+
+.theme-dark [class*="lookOutlined_"][class*="colorBrand_"]:hover {
+	border-color: var(--wheat);
+	background: var(--catthode-fill-hover);
+	color: var(--wheat);
+}
+
+/* Settings and voice surfaces keep their own panels visibly separated. */
+.theme-dark [class*="sidebarRegion_"] {
+	border-right: 1px solid var(--catthode-line);
+	background: var(--sidebar);
+}
+
+.theme-dark [class*="contentRegion_"] {
+	background: var(--base);
+}
+
+.theme-dark [class*="sidebarRegion_"] [class*="item_"] {
+	border: 1px solid transparent;
+	border-radius: var(--catthode-radius-sm);
+}
+
+.theme-dark [class*="sidebarRegion_"] [class*="item_"][aria-selected="true"] {
+	border-color: var(--catthode-line);
+	border-left: 3px solid var(--amber);
+	background: var(--catthode-fill-selected);
+	color: var(--text);
+}
+
+.theme-dark [class*="voicePanel_"],
+.theme-dark [class*="rtcConnection_"] {
+	border: 1px solid var(--catthode-line);
+	border-radius: var(--catthode-radius-md);
+	background: var(--surface-low);
+}
+
+/* Explicit focus rings make the dark surfaces keyboard-navigable. */
+.theme-dark :where(button, [role="button"], input, textarea, [contenteditable="true"]):focus-visible {
+	outline: 2px solid var(--gold) !important;
+	outline-offset: 2px;
+}
+
+/* No motion is added by Catthode; honor users who request less motion globally. */
+@media (prefers-reduced-motion: reduce) {
+	.theme-dark *,
+	.theme-dark *::before,
+	.theme-dark *::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 ::selection {
-  color: var(--text);
-  background: rgb(240 141 73 / 55%);
+	color: var(--text);
+	background: rgb(240 141 73 / 55%);
 }
 
 a:not([class]) {
-  color: var(--blue);
+	color: var(--gold);
 }
 
 :focus-visible {
