@@ -358,6 +358,10 @@
 	--panel-bg: var(--sidebar);
 	--chat-text-muted: var(--comment);
 
+	/* Keep Discord's visual-refresh header surfaces from falling back to brand orange. */
+	/* stylelint-disable-next-line custom-property-pattern -- Discord's visual-refresh token */
+	--__header-bar-background: var(--sidebar) !important;
+
 	/* Blurple is Discord's indirection layer for brand controls. */
 	--blurple-10: rgb(255 158 59 / 10%);
 	--blurple-20: rgb(255 158 59 / 20%);
@@ -583,6 +587,25 @@
 	background: var(--surface-low);
 }
 
+/* Direct Messages/Home uses a stable data id, while its selected class can
+ * change with Discord's visual refresh. Keep both the tile and glyph warm. */
+.theme-dark [data-list-item-id="guildsnav___home"] > [class*="childWrapper_"] {
+	border: 1px solid var(--catthode-line-soft);
+	background: var(--surface-low);
+	color: var(--comment);
+}
+
+.theme-dark [data-list-item-id="guildsnav___home"]:hover > [class*="childWrapper_"],
+.theme-dark [data-list-item-id="guildsnav___home"]:is([class*="selected_"], [aria-selected="true"]) > [class*="childWrapper_"] {
+	border-color: var(--wheat);
+	background: var(--amber) !important;
+	color: var(--base) !important;
+}
+
+.theme-dark [data-list-item-id="guildsnav___home"]:is([class*="selected_"], [aria-selected="true"]) > [class*="childWrapper_"] svg {
+	color: var(--base) !important;
+}
+
 .theme-dark [class*="guilds_"] [class*="wrapper_"]:hover > [class*="childWrapper_"],
 .theme-dark [class*="guilds_"] [class*="wrapper_"][aria-selected="true"] > [class*="childWrapper_"] {
 	border-color: var(--gold);
@@ -611,7 +634,9 @@
 	color: var(--base);
 }
 
-.theme-dark [class*="unread_"] {
+/* Only the unread marker inside a channel row is a filled accent. The top/bottom
+ * unread containers also carry an `unread_` class, but must keep their surface. */
+.theme-dark [class*="modeUnread"] > [class^="unread_"] {
 	background: var(--amber);
 }
 
